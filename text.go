@@ -15,6 +15,6 @@ func (tt *TinyTime) UnmarshalText(data []byte) error {
 	if err != nil {
 		return err
 	}
-	tt.unix = newTD.unix
+	*tt = newTD
 	return nil
 }

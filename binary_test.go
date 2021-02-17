@@ -7,7 +7,7 @@ import (
 )
 
 func TestMarshalBinary(t *testing.T) {
-	tt := TinyTime{unix: 1585750374}
+	tt := TinyTime(1585750374)
 	dat, err := tt.MarshalBinary()
 	assert.Nil(t, err)
 	assert.Equal(t, []byte{
@@ -18,7 +18,7 @@ func TestMarshalBinary(t *testing.T) {
 		byte(102),
 	}, dat)
 
-	newtt := TinyTime{}
+	var newtt TinyTime
 	err = newtt.UnmarshalBinary(dat)
 	assert.Nil(t, err)
 	assert.Equal(t, tt, newtt)
@@ -32,10 +32,11 @@ func TestUnmarshalBinary(t *testing.T) {
 		byte(161),
 		byte(102),
 	}
-	tt := TinyTime{}
+	var tt TinyTime
+
 	err := tt.UnmarshalBinary(dat)
 	assert.Nil(t, err)
-	assert.Equal(t, TinyTime{unix: 1585750374}, tt)
+	assert.Equal(t, TinyTime(1585750374), tt)
 
 	newDat, _ := tt.MarshalBinary()
 	assert.Equal(t, dat, newDat)

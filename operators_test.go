@@ -8,57 +8,57 @@ import (
 )
 
 func TestAfter(t *testing.T) {
-	tt := TinyTime{unix: 1585750374}
-	tu := TinyTime{unix: 1585750374}
+	tt := TinyTime(1585750374)
+	tu := TinyTime(1585750374)
 	assert.False(t, tt.After(tu))
 
-	tt = TinyTime{unix: 1585750375}
-	tu = TinyTime{unix: 1585750376}
+	tt = TinyTime(1585750375)
+	tu = TinyTime(1585750376)
 	assert.False(t, tt.After(tu))
 
-	tt = TinyTime{unix: 1585750374}
-	tu = TinyTime{unix: 1585750373}
+	tt = TinyTime(1585750374)
+	tu = TinyTime(1585750373)
 	assert.True(t, tt.After(tu))
 }
 
 func TestBefore(t *testing.T) {
-	tt := TinyTime{unix: 1585750374}
-	tu := TinyTime{unix: 1585750374}
+	tt := TinyTime(1585750374)
+	tu := TinyTime(1585750374)
 	assert.False(t, tt.Before(tu))
 
-	tt = TinyTime{unix: 1585750374}
-	tu = TinyTime{unix: 1585750373}
+	tt = TinyTime(1585750374)
+	tu = TinyTime(1585750373)
 	assert.False(t, tt.Before(tu))
 
-	tt = TinyTime{unix: 1585750374}
-	tu = TinyTime{unix: 1585750375}
+	tt = TinyTime(1585750374)
+	tu = TinyTime(1585750375)
 	assert.True(t, tt.Before(tu))
 }
 
 func TestAdd(t *testing.T) {
-	tt := TinyTime{unix: 1583020800}
+	tt := TinyTime(1583020800)
 	assert.Equal(t,
-		TinyTime{unix: 1583107200},
+		TinyTime(1583107200),
 		tt.Add(time.Hour*24),
 	)
 
-	tt = TinyTime{unix: 1583107200}
+	tt = TinyTime(1583107200)
 	assert.Equal(t,
-		TinyTime{unix: 1583020800},
+		TinyTime(1583020800),
 		tt.Add(-time.Hour*24),
 	)
 }
 
 func TestAddDate(t *testing.T) {
-	tt := TinyTime{unix: 1583020800}
+	tt := TinyTime(1583020800)
 	assert.Equal(t,
-		TinyTime{unix: 1583107200},
+		TinyTime(1583107200),
 		tt.AddDate(0, 0, 1),
 	)
 
-	tt = TinyTime{unix: 1583107200}
+	tt = TinyTime(1583107200)
 	assert.Equal(t,
-		TinyTime{unix: 1583020800},
+		TinyTime(1583020800),
 		tt.AddDate(0, 0, -1),
 	)
 }

@@ -1,6 +1,6 @@
 package tinytime
 
 // TinyTime -
-type TinyTime struct {
-	unix uint32
-}
+type TinyTime uint32
+
+var ZeroTime = TinyTime(0)

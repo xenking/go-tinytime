@@ -11,7 +11,7 @@ func TestFromTimeValid(t *testing.T) {
 	tm := time.Date(2020, time.Month(4), 1, 14, 12, 54, 0, time.UTC)
 	tt, err := FromTime(tm)
 	assert.Nil(t, err)
-	assert.Equal(t, TinyTime{unix: 1585750374}, tt)
+	assert.Equal(t, TinyTime(1585750374), tt)
 }
 
 func TestFromTimeInvalid(t *testing.T) {
@@ -21,11 +21,11 @@ func TestFromTimeInvalid(t *testing.T) {
 }
 
 func TestToTime(t *testing.T) {
-	tt := TinyTime{unix: 1585754374}
+	tt := TinyTime(1585754374)
 	tm := tt.ToTime()
 	assert.Equal(t, time.Date(2020, 4, 1, 15, 19, 34, 0, time.UTC), tm)
 
-	tt = TinyTime{unix: 1585750374}
+	tt = TinyTime(1585750374)
 	tm = tt.ToTime()
 	assert.Equal(t, time.Date(2020, 4, 1, 14, 12, 54, 0, time.UTC), tm)
 }

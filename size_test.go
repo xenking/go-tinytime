@@ -9,7 +9,7 @@ import (
 )
 
 func TestSizes(t *testing.T) {
-	tt := TinyTime{}
+	var tt TinyTime
 	assert.Equal(t, uintptr(4), unsafe.Sizeof(tt))
 
 	tm := time.Now().UTC()

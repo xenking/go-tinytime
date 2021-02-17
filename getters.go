@@ -14,7 +14,7 @@ func (tt TinyTime) Month() time.Month {
 	return tm.Month()
 }
 
-// Day retruns the day of the month as an integer
+// Day returns the day of the month as an integer
 func (tt TinyTime) Day() int {
 	tm := tt.ToTime()
 	return tm.Day()
@@ -27,7 +27,7 @@ func (tt TinyTime) String() string {
 
 // IsZero returns true if the time represents the the unix epoch time
 func (tt TinyTime) IsZero() bool {
-	return tt.unix == 0
+	return tt == ZeroTime
 }
 
 // Unix returns the time as a Unix timestamp

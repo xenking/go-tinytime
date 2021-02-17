@@ -4,12 +4,12 @@ import "time"
 
 // After returns true if tt is after tu
 func (tt TinyTime) After(tu TinyTime) bool {
-	return tt.unix > tu.unix
+	return tt > tu
 }
 
 // Before returns true if tt is before tu
 func (tt TinyTime) Before(tu TinyTime) bool {
-	return tt.unix < tu.unix
+	return tt < tu
 }
 
 // Add a duration to a TinyTime. Will only have an effect if more than 1 day is added
@@ -29,7 +29,7 @@ func (tt TinyTime) AddDate(years int, months int, days int) TinyTime {
 
 // Equal returns true if the times are exactly the same
 func (tt TinyTime) Equal(tu TinyTime) bool {
-	return tt.unix == tu.unix
+	return tt == tu
 }
 
 // Sub returns the duration (in days) between tt and tu

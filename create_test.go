@@ -8,19 +8,19 @@ import (
 
 func TestNew(t *testing.T) {
 	tt := New(1585750374)
-	assert.Equal(t, TinyTime{unix: 1585750374}, tt)
+	assert.Equal(t, TinyTime(1585750374), tt)
 }
 
 func TestUnix(t *testing.T) {
 	tt := Unix(1, 0)
-	assert.Equal(t, TinyTime{unix: 1}, tt)
+	assert.Equal(t, TinyTime(1), tt)
 
 	tt = Unix(86400, 0)
-	assert.Equal(t, TinyTime{unix: 86400}, tt)
+	assert.Equal(t, TinyTime(86400), tt)
 
 	tt = Unix(2678400, 0)
-	assert.Equal(t, TinyTime{unix: 2678400}, tt)
+	assert.Equal(t, TinyTime(2678400), tt)
 
 	tt = Unix(31536000, 0)
-	assert.Equal(t, TinyTime{unix: 31536000}, tt)
+	assert.Equal(t, TinyTime(31536000), tt)
 }

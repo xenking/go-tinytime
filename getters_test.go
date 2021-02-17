@@ -8,29 +8,28 @@ import (
 )
 
 func TestYear(t *testing.T) {
-	tt := TinyTime{unix: 1585750374}
+	tt := TinyTime(1585750374)
 	assert.Equal(t, 2020, tt.Year())
 }
 
 func TestMonth(t *testing.T) {
-	tt := TinyTime{unix: 1585750374}
+	tt := TinyTime(1585750374)
 	assert.Equal(t, time.April, tt.Month())
 }
 
 func TestDay(t *testing.T) {
-	tt := TinyTime{unix: 1585750374}
+	tt := TinyTime(1585750374)
 	assert.Equal(t, 1, tt.Day())
 }
 
 func TestString(t *testing.T) {
-	tt := TinyTime{unix: 1585750374}
+	tt := TinyTime(1585750374)
 	assert.Equal(t, "2020-04-01T14:12:54Z", tt.String())
 }
 
 func TestIsZero(t *testing.T) {
-	assert.True(t, TinyTime{}.IsZero())
-	assert.True(t, TinyTime{unix: 0}.IsZero())
-	assert.False(t, TinyTime{unix: 1}.IsZero())
+	assert.True(t, TinyTime(0).IsZero())
+	assert.False(t, TinyTime(1).IsZero())
 }
 
 func TestToUnix(t *testing.T) {

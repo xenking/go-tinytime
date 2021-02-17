@@ -9,11 +9,11 @@ import (
 func Parse(layout, value string) (TinyTime, error) {
 	t, err := time.Parse(layout, value)
 	if err != nil {
-		return TinyTime{}, fmt.Errorf("tinytime Parse: %v", err)
+		return ZeroTime, fmt.Errorf("tinytime Parse: %v", err)
 	}
 	tt, err := FromTime(t)
 	if err != nil {
-		return TinyTime{}, fmt.Errorf("tinytime Parse: %v", err)
+		return ZeroTime, fmt.Errorf("tinytime Parse: %v", err)
 	}
 	return tt, nil
 }
@@ -23,11 +23,11 @@ func Parse(layout, value string) (TinyTime, error) {
 func ParseInLocation(layout, value string, loc *time.Location) (TinyTime, error) {
 	t, err := time.ParseInLocation(layout, value, loc)
 	if err != nil {
-		return TinyTime{}, fmt.Errorf("tinytime ParseInLocation: %v", err)
+		return ZeroTime, fmt.Errorf("tinytime ParseInLocation: %v", err)
 	}
 	tt, err := FromTime(t)
 	if err != nil {
-		return TinyTime{}, fmt.Errorf("tinytime ParseInLocation: %v", err)
+		return ZeroTime, fmt.Errorf("tinytime ParseInLocation: %v", err)
 	}
 	return tt, nil
 }

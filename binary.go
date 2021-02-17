@@ -8,10 +8,10 @@ const tinyTimeBinaryVersion byte = 1
 func (tt TinyTime) MarshalBinary() ([]byte, error) {
 	enc := []byte{
 		tinyTimeBinaryVersion, // byte 0 : version
-		byte(tt.unix >> 24),   // byte 1-4: unix
-		byte(tt.unix >> 16),
-		byte(tt.unix >> 8),
-		byte(tt.unix),
+		byte(tt >> 24),   // byte 1-4: unix
+		byte(tt >> 16),
+		byte(tt >> 8),
+		byte(tt),
 	}
 	return enc, nil
 }
@@ -31,10 +31,10 @@ func (tt *TinyTime) UnmarshalBinary(data []byte) error {
 		return errors.New("tinytime: invalid length")
 	}
 
-	tt.unix = uint32(buf[4]) |
+	*tt = TinyTime(uint32(buf[4]) |
 		uint32(buf[3])<<8 |
 		uint32(buf[2])<<16 |
-		uint32(buf[1])<<24
+		uint32(buf[1])<<24)
 
 	return nil
 }

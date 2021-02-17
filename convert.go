@@ -13,14 +13,12 @@ func FromTime(t time.Time) (TinyTime, error) {
 	t = t.UTC()
 	unix := t.Unix()
 	if unix > math.MaxUint32 {
-		return TinyTime{}, fmt.Errorf("tinytime FromTime: unix must be less than %v", math.MaxUint32)
+		return ZeroTime, fmt.Errorf("tinytime FromTime: unix must be less than %v", math.MaxUint32)
 	}
-	return TinyTime{
-		unix: uint32(unix),
-	}, nil
+	return TinyTime(unix), nil
 }
 
 // ToTime converts a tinyTinyTime.TinyTime to a time.Time, always UTC
 func (tt TinyTime) ToTime() time.Time {
-	return time.Unix(int64(tt.unix), 0).UTC()
+	return time.Unix(int64(tt), 0).UTC()
 }

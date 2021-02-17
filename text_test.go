@@ -7,7 +7,7 @@ import (
 )
 
 func TestMarshalText(t *testing.T) {
-	tt := TinyTime{unix: 1585750374}
+	tt := TinyTime(1585750374)
 	dat, err := tt.MarshalText()
 	assert.Nil(t, err)
 	assert.Equal(t, []byte(`2020-04-01T14:12:54Z`), dat)
@@ -15,8 +15,8 @@ func TestMarshalText(t *testing.T) {
 
 func TestUnmarshalText(t *testing.T) {
 	dat := []byte(`2020-04-01T14:12:54Z`)
-	tt := TinyTime{}
+	var tt TinyTime
 	err := tt.UnmarshalText(dat)
 	assert.Nil(t, err)
-	assert.Equal(t, TinyTime{unix: 1585750374}, tt)
+	assert.Equal(t, TinyTime(1585750374), tt)
 }

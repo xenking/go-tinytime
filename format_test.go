@@ -10,13 +10,13 @@ import (
 func TestParse(t *testing.T) {
 	tt, err := Parse(time.RFC3339, "2020-04-01T14:12:54Z")
 	assert.Nil(t, err)
-	assert.Equal(t, 1585750374, int(tt.unix))
+	assert.Equal(t, 1585750374, int(tt))
 }
 
 func TestParseInLocation(t *testing.T) {
 	tt, err := ParseInLocation(time.RFC3339, "2020-04-01T14:12:54Z", time.UTC)
 	assert.Nil(t, err)
-	assert.Equal(t, 1585750374, int(tt.unix))
+	assert.Equal(t, 1585750374, int(tt))
 }
 
 func TestAppendFormat(t *testing.T) {
@@ -30,5 +30,5 @@ func TestAppendFormat(t *testing.T) {
 func TestFormat(t *testing.T) {
 	tt := New(1585750374)
 
-	assert.Equal(t, "2020-04-01T14:12:54Z", string(tt.Format(time.RFC3339)))
+	assert.Equal(t, "2020-04-01T14:12:54Z", tt.Format(time.RFC3339))
 }
